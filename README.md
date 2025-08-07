@@ -50,6 +50,8 @@ real-time-ecommerce-insights-azure/
 │   └── ecommerce_sales_dashboard.pbix
 ├── Simulator/              # Python script to simulate U.S. orders
 │   └── generate_orders.py
+├── CICD/                   # Git commit history & tracking
+│   └── git_commands.sh
 └── README.md               # 📄 This file
 ```
 ---
@@ -92,8 +94,20 @@ We created a **3-layer Delta Lake architecture** using **Structured Streaming** 
 - Named `1_bronze_stream.py`, `2_silver_clean.py`, `3_gold_agg.py`
 - Git tracked using:  
 ```bash
-git add Databrick\ Notebooks/
-git commit -m "Add Bronze, Silver, Gold notebooks for streaming pipeline"
+cd databricks_notebooks
+git add 01-streamorders-to-bronze.py
+cd ..
+git commit -m "Bronze layer streaming for U.S. order data"
+
+cd databricks_notebooks
+git add 02_clean_to_silver.py
+cd ..
+git commit -m "Cleaned and enriched Bronze data into Silver layer for U.S. cities"
+
+cd databricks_notebooks
+git add 03_aggregate_to_gold.py
+cd ..
+git commit -m "Aggregated Silver data to Gold layer for U.S. states (minute totals)"
 ```
 
 ---
@@ -103,9 +117,9 @@ git commit -m "Add Bronze, Silver, Gold notebooks for streaming pipeline"
 Used Azure Blob Storage to persist all three layers in **Delta format**, organized as:
 
 ```
-/mnt/data/bronze/  
-/mnt/data/silver/  
-/mnt/data/gold/
+abfss://ecommerce@ecommercestoragejk.dfs.core.windows.net/bronze/
+abfss://ecommerce@ecommercestoragejk.dfs.core.windows.net/silver/  
+abfss://ecommerce@ecommercestoragejk.dfs.core.windows.net/gold/
 ```
 
 - Delta files were automatically updated via streaming write
@@ -137,9 +151,11 @@ Connected Power BI to **Databricks SQL Endpoint** to read the Gold Delta Table.
 
 🧾 Tracked Power BI with:
 ```bash
-cd Power\ BI/
-git add .
-git commit -m "Add Power BI dashboard with state-wise visuals"
+cd Power\ BI
+touch README.md
+echo "# Power BI Dashboard for Real-Time E-Commerce Insights (U.S.)" > README.md
+git add Power\ BI
+git commit -m "Power BI dashboard with U.S. state-wise forecasting from Gold layer"
 ```
 
 > ❌ Note: Forecasting was planned but **not implemented** in the final version.
@@ -158,14 +174,6 @@ Used Git CLI for all version tracking:
 ## ✅ Final Outcome
 
 This project delivers a **fully functional real-time analytics pipeline** powered by Azure and Delta Lake. The dashboard provides operations teams with **minute-level insights** into U.S. e-commerce orders by product, state, and time.
-
----
-
-## 📌 Next Steps (Optional)
-
-- Add live forecasting using Power BI’s built-in analytics
-- Schedule CI/CD automation for Databricks notebooks using GitHub Actions
-- Extend simulator to include product categories or geolocation lat/long
 
 ---
 
