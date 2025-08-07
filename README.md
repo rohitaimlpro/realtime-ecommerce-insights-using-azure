@@ -5,11 +5,27 @@
 ---
 
 ## 🔧 Tech Stack
-- **Data Ingestion**: Azure Event Hub + Python Simulator  
-- **Processing**: Azure Databricks (PySpark) – Bronze, Silver, Gold layers  
-- **Storage**: Azure Blob Storage (Delta Format)  
-- **Visualization**: Power BI Desktop (Live Connection to Gold Table)  
-- **Version Control**: Git CLI & GitHub  
+- **Data Ingestion**:
+
+![Azure Event Hub](https://img.shields.io/badge/Azure%20Event%20Hub-0078D4?logo=microsoftazure&logoColor=white&style=for-the-badge)
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white&style=for-the-badge)
+
+- **Processing**:
+  
+![PySpark](https://img.shields.io/badge/PySpark-E25A1C?logo=apachespark&logoColor=white&style=for-the-badge)
+![Azure Databricks](https://img.shields.io/badge/Azure%20Databricks-FF3621?logo=databricks&logoColor=white&style=for-the-badge)
+- **Storage**:
+
+![Delta Lake](https://img.shields.io/badge/Delta%20Lake-0A74DA?logo=data%20bricks&logoColor=white&style=for-the-badge)
+![Azure Blob Storage](https://img.shields.io/badge/Azure%20Blob%20Storage-0089D6?logo=microsoftazure&logoColor=white&style=for-the-badge)
+
+- **Visualization**:
+
+![Power BI](https://img.shields.io/badge/Power%20BI-F2C811?logo=powerbi&logoColor=black&style=for-the-badge)
+
+- **Version Control**:
+
+![Git](https://img.shields.io/badge/Git-F05032?logo=git&logoColor=white&style=for-the-badge)
 
 ---
 
@@ -157,9 +173,7 @@ This project delivers a **fully functional real-time analytics pipeline** powere
 
 ```
 📂 Simulator         → Sends real-time JSON orders to Event Hub
-📂 Event Hub         → Azure setup: namespace + hub
 📂 Databrick Notebooks → Bronze → Silver → Gold PySpark logic
-📂 Storage           → Delta Lake directory structure
 📂 Power BI          → Final .pbix with charts and map
 📂 CICD              → Git commit history & tracking
 ```
