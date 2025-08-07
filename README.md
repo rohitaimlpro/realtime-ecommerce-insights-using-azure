@@ -4,11 +4,7 @@
 
 ---
 
-## 🚀 Project Overview
-
-This real-time data engineering project simulates and processes live e-commerce order data to deliver insightful dashboards for U.S. retail operations. We built an end-to-end pipeline using Azure-native tools and open-source technologies, following a **Bronze → Silver → Gold** architecture.
-
-🔧 **Tech Stack**:  
+## 🔧 Tech Stack
 - **Data Ingestion**: Azure Event Hub + Python Simulator  
 - **Processing**: Azure Databricks (PySpark) – Bronze, Silver, Gold layers  
 - **Storage**: Azure Blob Storage (Delta Format)  
@@ -17,26 +13,34 @@ This real-time data engineering project simulates and processes live e-commerce 
 
 ---
 
+## 🚀 Project Overview
+
+This real-time data engineering project simulates and processes live e-commerce order data to deliver insightful dashboards for U.S. retail operations. We built an end-to-end pipeline using Azure-native tools and open-source technologies, following a **Bronze → Silver → Gold** architecture.
+
+<img width="6863" height="3358" alt="Strategy and planning" src="https://github.com/user-attachments/assets/e04b329f-9a6f-4f69-a199-54240d4c6fc7" />
+
+---
+
 ## 🧪 Project Structure
 
 ```
 real-time-ecommerce-insights-azure/
 │
-├── CICD/                    # Git version tracking setup
 ├── Databrick Notebooks/    # Bronze, Silver, Gold notebooks
-├── Event Hub/              # Namespace and Hub config
+│   └── 01_stream_orders_to_bronze.py
+│   └── 02_cleaned_values_silver.py
+│   └── 03_aggregated_to_gold.py
 ├── Power BI/               # Dashboard file (.pbix)
+│   └── ecommerce_sales_dashboard.pbix
 ├── Simulator/              # Python script to simulate U.S. orders
-├── Storage/                # Bronze, Silver, Gold Delta folders
-├── requirements.txt        # Python dependencies
+│   └── generate_orders.py
 └── README.md               # 📄 This file
 ```
-
 ---
 
 ## 🧱 Step 1: Data Simulation + Event Streaming
 
-📦 Created a Python simulator to continuously send fake U.S.-based e-commerce orders (TX, NY, CA...) to **Azure Event Hub**.
+📦 Created a Python simulator to continuously send fake U.S.-based e-commerce orders (TX, NY, CA...) to **Azure Event Hub**. [generate_orders.py](simulator/generate_orders.py)
 
 - Events included `order_id`, `state`, `city`, `product`, `quantity`, `price`, `timestamp`
 - Used Python libraries: `uuid`, `random`, `json`, `time`, `azure-eventhub`
@@ -53,17 +57,17 @@ real-time-ecommerce-insights-azure/
 
 We created a **3-layer Delta Lake architecture** using **Structured Streaming** in PySpark.
 
-### 🍂 Bronze Layer
+### 🍂 Bronze Layer [01_stream_orders_to_bronze.py](databricks_notebooks/01_stream_orders_to_bronze.py)
 - Read streaming data directly from Event Hub
 - Parsed and flattened JSON events
 - Wrote raw data to Azure Blob in Delta format
 
-### 🔧 Silver Layer
+### 🔧 Silver Layer [02_cleaned_values_silver.py](databricks_notebooks/02_cleaned_values_silver.py)
 - Cleaned, filtered, and type-casted Bronze data
 - Removed nulls, bad records
 - Stored refined data as a Delta table
 
-### 🪙 Gold Layer
+### 🪙 Gold Layer [03_aggregated_to_gold.py](databricks_notebooks/03_aggregated_to_gold.py)
 - Performed aggregation with **1-minute windows** (not hourly)
 - Grouped by `state`, `product`, and `timestamp`
 - Stored final result table (`gold`) to Blob in Delta
@@ -110,6 +114,10 @@ Connected Power BI to **Databricks SQL Endpoint** to read the Gold Delta Table.
 | 🍩 Donut Chart 1 | Total sales per state |
 | 🍩 Donut Chart 2 | Total items sold per state |
 | 📄 Raw Data Table | Sorted by highest sales at top |
+
+
+<img width="1418" height="792" alt="Screenshot 2025-08-07 135137" src="https://github.com/user-attachments/assets/1a9187b6-8ff9-4b77-81d2-43060aa981d1" />
+
 
 🧾 Tracked Power BI with:
 ```bash
@@ -158,9 +166,7 @@ This project delivers a **fully functional real-time analytics pipeline** powere
 
 ---
 
-**Author**: *Your Name*  
-**GitHub**: [yourusername](https://github.com/yourusername)
+**Author**: *Jaya Chandra Kadiveti*  
+**GitHub**: [username](https://github.com/Jay61616)
 
 ---
-
-🎯 *Built for real-world, cloud-ready data engineering portfolios*
