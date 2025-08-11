@@ -37,6 +37,12 @@ This real-time data engineering project simulates and processes live e-commerce 
 
 ---
 
+## 🎥 Project Walkthrough Video
+
+I’ve created a detailed YouTube video explaining the project and walking through the entire execution step-by-step.  
+[![Watch the video](https://img.shields.io/badge/YouTube-Video-red?logo=youtube&logoColor=white)](https://youtu.be/H9cK7ELbjLg?si=r0okbdiiWJCO5R8v)
+
+
 ## 🧪 Project Structure
 
 ```
@@ -158,8 +164,6 @@ git add Power\ BI
 git commit -m "Power BI dashboard with U.S. state-wise forecasting from Gold layer"
 ```
 
-> ❌ Note: Forecasting was planned but **not implemented** in the final version.
-
 ---
 
 ## 🔗 Git Version Control
@@ -190,5 +194,5 @@ This project delivers a **fully functional real-time analytics pipeline** powere
 
 **Author**: *Jaya Chandra Kadiveti*  
 **GitHub**: [username](https://github.com/Jay61616)
-**Contack**: [Kadivetijayachandra@gmail.com](mailto:Kadivetijayachandra@gmail.com)
+**Contact**: [Kadivetijayachandra@gmail.com](mailto:Kadivetijayachandra@gmail.com)
 ---
