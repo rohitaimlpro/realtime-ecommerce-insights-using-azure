@@ -183,10 +183,3 @@ This project delivers a **fully functional real-time analytics pipeline** powere
 📂 Power BI          → Final .pbix with charts and map
 📂 CICD              → Git commit history & tracking
 ```
-
----
-
-**Author**: *Jaya Chandra Kadiveti*  
-**GitHub**: [username](https://github.com/Jay61616)
-**Contact**: [Kadivetijayachandra@gmail.com](mailto:Kadivetijayachandra@gmail.com)
----
